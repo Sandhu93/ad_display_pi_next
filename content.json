@@ -1,0 +1,35 @@
+{
+  "stats": {
+    "total_students": 350,
+    "total_faculty": 25,
+    "labs_available": 8,
+    "ongoing_projects": 15,
+    "research_publications": 45,
+    "placements_last_year": 120,
+    "student_clubs": 4,
+    "average_package_offered": "6 LPA",
+    "internships_secured": 85,
+    "industry_collaborations": 10
+  },
+  "news": [
+    "Welcome to our research lab display board",
+    "New research paper published in Nature",
+    "Lab awarded major research grant",
+    "Upcoming conference presentation next month"
+  ],
+  "achievements": [
+    "Published 3 papers in top journals",
+    "Successfully completed Phase 1 of major project",
+    "Two team members awarded PhD",
+    "Research featured in international media"
+  ],
+  "tickerText": "Welcome to our research lab • New achievements • Ongoing projects • Latest publications",
+  "mediaContent": {
+    "images": [
+      "/media/photos/image1.jpg",
+      "/media/photos/image2.jpg",
+      "/media/photos/image3.jpg"
+    ],
+    "videoUrl": "/media/video/sample.mp4"
+  }
+}

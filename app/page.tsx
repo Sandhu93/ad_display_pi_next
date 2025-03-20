@@ -91,14 +91,14 @@ export default function Display() {
             <StatsGrid stats={content.stats} />
           </div>
           <div className="flex items-center bg-gray-900 text-white py-4 px-6 overflow-hidden whitespace-nowrap h-[16vh]">
-            <div className="mr-6 font-bold flex items-center text-white text-2xl">
+            <div className="mr-6 font-bold flex items-center text-white text-[clamp(2rem,4vw,5rem)]">
               WELCOME
-              <span className="mx-3 text-white text-[clamp(1.5rem,3vw,4rem)]">
+              <span className="mx-3 text-white text-[clamp(2.5rem,5vw,6rem)]">
                 ⟩
               </span>
             </div>
             <div className="marquee overflow-hidden whitespace-nowrap relative w-full">
-              <div className="animate-marquee inline-block text-4xl font-bold">
+              <div className="animate-marquee inline-block font-bold text-[clamp(2rem,6vw,6rem)]">
                 Muthoot Institute of Technology and Science welcomes the NBA
                 Evaluation Team.
               </div>
@@ -124,13 +124,17 @@ export default function Display() {
         <div className="landscape:w-1/4 portrait:h-[38vh] flex flex-col gap-2">
           {/* Market Watch */}
           <div className="landscape:h-[20vh] portrait:h-1/4 bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-lg font-bold">Market Watch</h2>
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold">
+              Market Watch
+            </h2>
             <StockTicker />
           </div>
 
           {/* News Section */}
           <div className="landscape:h-[34vh] portrait:h-[38%] bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-lg font-bold mb-2">Departments</h2>
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2">
+              Departments
+            </h2>
             <AutoScroll
               items={content.Departments}
               speed={50}
@@ -140,7 +144,9 @@ export default function Display() {
 
           {/* Achievements Section */}
           <div className="landscape:h-[34vh] portrait:h-[38%] bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-lg font-bold mb-2">Major Recruiters</h2>
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2">
+              Major Recruiters
+            </h2>
             <AutoScroll
               items={content.major_recruiters}
               speed={50}

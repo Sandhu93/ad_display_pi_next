@@ -19,8 +19,10 @@ export default function Clock() {
 
   return (
     <div className="flex items-center gap-2">
-      <ClockIcon className="w-6 h-6" />
-      <time className="text-xl">{time}</time>
+      <ClockIcon className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+      <time className="text-base md:text-lg lg:text-xl xl:text-2xl">
+        {time}
+      </time>
     </div>
   );
 }

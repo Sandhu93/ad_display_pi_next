@@ -71,9 +71,9 @@ export default function Display() {
             <img
               src="/media/MITS-LOGO-NEW.jpeg"
               alt="Logo"
-              className="h-6 w-auto"
+              className="h-6 sm:h-8 md:h-10 lg:h-12 xl:h-14 w-auto"
             />
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-[clamp(1.5rem,2.5vw,3rem)] font-bold">
               Muthoot Institute of Technology and Science
             </h1>
           </div>
@@ -93,7 +93,9 @@ export default function Display() {
           <div className="flex items-center bg-gray-900 text-white py-4 px-6 overflow-hidden whitespace-nowrap h-[16vh]">
             <div className="mr-6 font-bold flex items-center text-white text-2xl">
               WELCOME
-              <span className="mx-3 text-white text-3xl">⟩</span>
+              <span className="mx-3 text-white text-[clamp(1.5rem,3vw,4rem)]">
+                ⟩
+              </span>
             </div>
             <div className="marquee overflow-hidden whitespace-nowrap relative w-full">
               <div className="animate-marquee inline-block text-4xl font-bold">

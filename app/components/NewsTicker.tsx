@@ -24,7 +24,7 @@ export default function NewsTicker({ news, speed = 30 }: NewsTickerProps) {
   }, [speed]);
 
   return (
-    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap">
+    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-base md:text-lg lg:text-xl xl:text-2xl">
       <div
         className="inline-block"
         style={{ transform: `translateX(${position}%)` }}

@@ -34,7 +34,7 @@ export default function StockTicker() {
         {stocks.map((stock) => (
           <div
             key={stock.symbol}
-            className="flex items-center gap-2 bg-gray-700 p-2 rounded"
+            className="flex items-center gap-2 bg-gray-700 p-2 rounded text-sm sm:text-base md:text-lg"
           >
             <span className="font-bold">{stock.symbol}</span>
             <span>{stock.price.toFixed(2)}</span>

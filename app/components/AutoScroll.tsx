@@ -42,9 +42,9 @@ export default function AutoScroll({
         {[...items, ...items].map((item, index) => (
           <div
             key={index}
-            className={`bg-gray-700 p-2 rounded-lg ${itemClassName}`}
+            className={`bg-gray-700 p-2 rounded-lg text-sm sm:text-base md:text-lg ${itemClassName}`}
           >
-            <p className="text-sm">{item}</p>
+            <p>{item}</p>
           </div>
         ))}
       </div>

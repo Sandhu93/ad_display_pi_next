@@ -19,6 +19,8 @@ const defaultContent: DisplayContent = {
   },
   news: [],
   achievements: [],
+  Departments: [],
+  major_recruiters: [],
   tickerText: "",
   mediaContent: {
     images: [
@@ -62,10 +64,19 @@ export default function Display() {
 
   return (
     <div className="h-screen w-screen flex flex-col bg-gray-900 text-white overflow-hidden">
-      {/* Header */}
+      {/* Header MITS-LOGO-NEW.jpeg */}
       <header className="h-[7vh] bg-gray-800 px-4">
         <div className="h-full flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Research Lab Display</h1>
+          <div className="flex items-center gap-3">
+            <img
+              src="/media/MITS-LOGO-NEW.jpeg"
+              alt="Logo"
+              className="h-6 w-auto"
+            />
+            <h1 className="text-2xl font-bold">
+              Muthoot Institute of Technology and Science
+            </h1>
+          </div>
           <Clock />
         </div>
       </header>
@@ -76,17 +87,32 @@ export default function Display() {
         <div className="landscape:w-3/4 portrait:h-[50vh] flex flex-col gap-2">
           {/* Stats Section */}
           {/* Stats Section */}
-          <div className="h-[20vh]">
+          <div className="h-[15vh]">
             <StatsGrid stats={content.stats} />
+          </div>
+          <div className="flex items-center bg-gray-900 text-white py-4 px-6 overflow-hidden whitespace-nowrap h-[16vh]">
+            <div className="mr-6 font-bold flex items-center text-white text-2xl">
+              WELCOME
+              <span className="mx-3 text-white text-3xl">⟩</span>
+            </div>
+            <div className="marquee overflow-hidden whitespace-nowrap relative w-full">
+              <div className="animate-marquee inline-block text-4xl font-bold">
+                Muthoot Institute of Technology and Science welcomes the NBA
+                Evaluation Team.
+              </div>
+            </div>
           </div>
 
           {/* Media Section */}
           {/* Media Section */}
-          <div className="flex-1 grid portrait:grid-rows-2 landscape:grid-cols-2 gap-2">
-            <div className="bg-gray-800 rounded-lg overflow-hidden portrait:max-h-[18vh] portrait:max-w-[90vw] landscape:max-h-[50vh] landscape:max-w-[50vw] flex items-center justify-center">
+          <div className="flex-1 flex gap-2">
+            {/* 38% width */}
+            <div className="basis-[39%] bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
               <VideoSection videoUrl={content.mediaContent.videoUrl} />
             </div>
-            <div className="bg-gray-800 rounded-lg overflow-hidden portrait:max-h-[18vh] portrait:max-w-[90vw] landscape:max-h-[50vh] landscape:max-w-[50vw] flex items-center justify-center">
+
+            {/* 62% width */}
+            <div className="basis-[61%] bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
               <ImageSlideshow images={content.mediaContent.images} />
             </div>
           </div>
@@ -102,9 +128,9 @@ export default function Display() {
 
           {/* News Section */}
           <div className="landscape:h-[34vh] portrait:h-[38%] bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-lg font-bold mb-2">Latest News</h2>
+            <h2 className="text-lg font-bold mb-2">Departments</h2>
             <AutoScroll
-              items={content.news}
+              items={content.Departments}
               speed={50}
               className="h-[calc(100%-2rem)]"
             />
@@ -112,9 +138,9 @@ export default function Display() {
 
           {/* Achievements Section */}
           <div className="landscape:h-[34vh] portrait:h-[38%] bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-lg font-bold mb-2">Achievements</h2>
+            <h2 className="text-lg font-bold mb-2">Major Recruiters</h2>
             <AutoScroll
-              items={content.achievements}
+              items={content.major_recruiters}
               speed={50}
               className="h-[calc(100%-2rem)]"
             />
@@ -125,6 +151,7 @@ export default function Display() {
       {/* News Ticker */}
       <footer className="h-[5vh] bg-blue-600">
         <NewsTickerContainer headlines={content.news} />
+        {/* <NewsTickerContainer headlines={[content.tickerText]} /> */}
       </footer>
     </div>
   );

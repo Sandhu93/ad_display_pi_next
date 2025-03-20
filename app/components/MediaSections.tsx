@@ -12,7 +12,7 @@ export function VideoSection({ videoUrl }: { videoUrl: string }) {
   return (
     <div className="h-full">
       <video
-        className="w-full h-full rounded-lg object-cover"
+        className="w-full h-full rounded-lg object-contain"
         autoPlay
         loop
         muted
@@ -49,31 +49,8 @@ export function ImageSlideshow({ images }: { images: string[] }) {
       <img
         src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
-        className="w-full h-full rounded-lg object-cover"
+        className="w-full h-full rounded-lg object-contain"
       />
-      <button
-        onClick={prevSlide}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-1 rounded-full"
-      >
-        <ChevronLeft className="w-4 h-4" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-1 rounded-full"
-      >
-        <ChevronRight className="w-4 h-4" />
-      </button>
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-1.5 h-1.5 rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 }

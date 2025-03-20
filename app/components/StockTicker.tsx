@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface StockData {
   symbol: string;
@@ -9,27 +9,21 @@ interface StockData {
 }
 
 export default function StockTicker() {
-  const [stocks, setStocks] = useState<StockData[]>([
-    { symbol: "NIFTY50", price: 19500.25, change: 0.75 },
-    { symbol: "SENSEX", price: 65420.75, change: -0.25 },
-    // Add more default stocks as needed
-  ]);
+  const [stocks, setStocks] = useState<StockData[]>([]);
 
   useEffect(() => {
-    // Here you would typically fetch real stock data from an API
     const fetchStockData = async () => {
       try {
-        // Replace with your actual stock API endpoint
-        // const response = await fetch('your-stock-api-endpoint');
-        // const data = await response.json();
-        // setStocks(data);
+        const response = await fetch("/api/stocks");
+        const data = await response.json();
+        setStocks(data);
       } catch (error) {
         console.error("Error fetching stock data:", error);
       }
     };
 
     fetchStockData();
-    const interval = setInterval(fetchStockData, 30000); // Update every 30 seconds
+    const interval = setInterval(fetchStockData, 5 * 60 * 1000); // every 5 min
 
     return () => clearInterval(interval);
   }, []);
@@ -49,7 +43,8 @@ export default function StockTicker() {
                 stock.change >= 0 ? "text-green-500" : "text-red-500"
               }`}
             >
-              {stock.change >= 0 ? "↑" : "↓"} {Math.abs(stock.change)}%
+              {stock.change >= 0 ? "↑" : "↓"}{" "}
+              {Math.abs(stock.change).toFixed(2)}%
             </span>
           </div>
         ))}

@@ -1,0 +1,97 @@
+{
+  "stats": {
+    "total_students": 2398,
+    "total_faculty": 147,
+    "labs_available": 51,
+    "ongoing_projects": 20,
+    "placements 2025": "162* (ongoing)"
+  },
+  "news": [
+    "• Welcome NBA Evaluation Team to Muthoot Institute of Technology and Science ",
+    "GDG MITS hosted Breaking Into Tech on March 17, 2025, at Albert Einstein Hall, featuring industry veteran Mr. Amit Chopra (Google, Amazon, Microsoft, Meta).",
+    "The Startup Zero to One workshop, organized by Scale Up & Hire Kerala in collaboration with IEDC MITS, was held on March 15, 2025, at Visvesvaraya Hall. ",
+    "Congratulations to Shaen Mery Saj (S2 AI & DS), the winner of The Women’s Day Photography Contest, Frame the ‘Mom’ent!!",
+    "IEEE SB MITS successfully hosted the 7th Annual General Meeting on March 12, 2025, at APJ Abdul Kalam Hall."
+  ],
+  "achievements": [
+    "Published 3 papers in top journals",
+    "Successfully completed Phase 1 of major project",
+    "Two team members awarded PhD",
+    "Research featured in international media"
+  ],
+  "tickerText": [
+    "Welcome NBA Evaluation Team to Muthoot Institute of Technology and Science"
+  ],
+  "mediaContent": {
+    "images": [
+      "/media/photos/1.png",
+      "/media/photos/2.png",
+      "/media/photos/3.png",
+      "/media/photos/4.png",
+      "/media/photos/5.png",
+      "/media/photos/6.png",
+      "/media/photos/7.png",
+      "/media/photos/8.png",
+      "/media/photos/9.png",
+      "/media/photos/10.png",
+      "/media/photos/11.png",
+      "/media/photos/12.png",
+      "/media/photos/13.png",
+      "/media/photos/14.png",
+      "/media/photos/15.png",
+      "/media/photos/16.png",
+      "/media/photos/17.png",
+      "/media/photos/19.png"
+    ],
+    "videoUrl": "/media/video/MITS_promo_2023.mp4"
+  },
+  "Departments": [
+    "Civil Engineering",
+    "Computer Science Engineering",
+    "Electrical & Electronics Engineering",
+    "Electronics & Communication Engineeringg",
+    "Mechanical Engineering",
+    "Artificial Intelligence & Data Science",
+    "Basic Science & Humanities",
+    "Computer Applications"
+  ],
+  "major_recruiters": [
+    "IBM Software Labs",
+    "MyGate",
+    "Mitsogo",
+    "UST",
+    "H&R Block",
+    "Lektik Consulting",
+    "Aarbee Structures",
+    "Electrifex Technologies",
+    "Digital Core Tech.",
+    "IBM WatsonX Coding Challenge",
+    "Zero Pixels",
+    "Ernst & Young",
+    "Innovature Labs",
+    "Envestnet",
+    "EY DGS Internship’25",
+    "Navalt Solar",
+    "Marine Electricals",
+    "Amararaja Design Alpha",
+    "LTI Mindtree",
+    "SunTec Business Solutions",
+    "Synthite Mech",
+    "Aptiv Connection Systems",
+    "SRFM Calculus India Private Limited",
+    "TurnB Business Services",
+    "Nest SFO Technologies",
+    "Nest SFO Technologies p2",
+    "Project Fashionx -Startup Village",
+    "Voltas-UMPESL",
+    "Thoughtworks",
+    "dSPACE Tech.",
+    "Anand Group-Baja",
+    "Gensol EV",
+    "CDAC",
+    "Digital University Kerala",
+    "Molekules Design",
+    "Infosys",
+    "Kerala State Productivity Council (KSPC)"
+  ]
+}

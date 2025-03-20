@@ -1,12 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface MediaContent {
-  images: string[];
-  videoUrl: string;
-}
 
 export function VideoSection({ videoUrl }: { videoUrl: string }) {
   return (
@@ -35,14 +29,6 @@ export function ImageSlideshow({ images }: { images: string[] }) {
 
     return () => clearInterval(timer);
   }, [images.length]);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
 
   return (
     <div className="relative h-full">

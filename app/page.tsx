@@ -39,7 +39,7 @@ export default function Display() {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const res = await fetch("/api/content");
+        const res = await fetch("/content.json");
         const data = await res.json();
         setContent(data);
       } catch (error) {

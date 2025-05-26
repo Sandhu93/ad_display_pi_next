@@ -304,6 +304,7 @@ export default function Admin() {
             </div>
             <input type="file" accept="image/*" multiple onChange={async (e) => {
                 const files = e.target.files;
+                console.log('Selected files:', files);
                 if (files) {
                   const uploadedImagePaths: string[] = [];
                   for (let i = 0; i < files.length; i++) {
@@ -318,6 +319,7 @@ export default function Admin() {
                       });
                       const data = await res.json();
                       if (data.status === 'succeeded') {
+                        console.log('Upload successful, data:', data);
                         uploadedImagePaths.push(data.path);
                       } else {
                         alert(`Image upload failed for ${file.name}.`);

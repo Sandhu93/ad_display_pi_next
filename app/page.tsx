@@ -21,7 +21,7 @@ const defaultContent: DisplayContent = {
   achievements: [],
   Departments: [],
   major_recruiters: [],
-  tickerText: "",
+  tickerText: [],
   mediaContent: {
     images: [
       "/media/photos/image1.jpg",

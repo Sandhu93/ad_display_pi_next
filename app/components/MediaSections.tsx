@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 
 import { useState, useEffect } from "react";
 
@@ -32,9 +33,11 @@ export function ImageSlideshow({ images }: { images: string[] }) {
 
   return (
     <div className="relative h-full">
-      <img
+      <Image
         src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
+        width={1920} // Or a suitable base width
+        height={1080} // Or a suitable base height
         className="w-full h-full rounded-lg object-contain"
       />
     </div>

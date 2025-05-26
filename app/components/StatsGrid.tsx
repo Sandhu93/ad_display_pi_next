@@ -21,10 +21,10 @@ export default function StatsGrid({ stats }: StatsGridProps) {
           key={key}
           className="bg-gray-800 rounded-lg flex flex-col items-center justify-center p-2 text-center"
         >
-          <p className="text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg text-gray-400">
+          <p className="text-[clamp(0.8rem,1.5vw,1.2rem)] text-gray-400">
             {formatStatKey(key)}
           </p>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold">
+          <p className="text-[clamp(1.5rem,3vw,2.8rem)] font-bold">
             {value}
           </p>
         </div>

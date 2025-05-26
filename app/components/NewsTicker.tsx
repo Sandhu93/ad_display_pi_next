@@ -24,7 +24,7 @@ export default function NewsTicker({ news, speed = 30 }: NewsTickerProps) {
   }, [speed]);
 
   return (
-    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold">
+    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-[clamp(1rem,2vw,2.5rem)] font-semibold">
       <div
         className="inline-block"
         style={{ transform: `translateX(${position}%)` }}

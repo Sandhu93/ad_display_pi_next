@@ -31,6 +31,7 @@ const defaultContent: DisplayContent = {
     videoUrl: "/media/video/sample.mp4",
   },
 };
+import Image from 'next/image';
 
 export default function Display() {
   const [content, setContent] = useState<DisplayContent>(defaultContent);
@@ -68,9 +69,11 @@ export default function Display() {
       <header className="h-[7vh] bg-gray-800 px-4">
         <div className="h-full flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="/media/MITS-LOGO-NEW.jpeg"
-              alt="Logo"
+              alt="MITS Logo"
+              width={100} // Provide a reasonable size; styling controls visual dimensions
+              height={100} // Provide a reasonable size; styling controls visual dimensions
               className="h-6 sm:h-8 md:h-10 lg:h-12 xl:h-14 w-auto"
             />
             <h1 className="text-[clamp(1.5rem,2.5vw,3rem)] font-bold">

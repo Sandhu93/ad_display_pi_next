@@ -7,6 +7,7 @@ import type { DisplayContent } from "../types";
 export default function Admin() {
   const [content, setContent] = useState<DisplayContent>({
     stats: { total_students: 0, total_faculty: 0, labs_available: 0, ongoing_projects: 0, projects: 0, team: 0, publications: 0 },
+    // Ensure all properties from DisplayContent are initialized
     news: [],
     achievements: [],
     tickerText: [],

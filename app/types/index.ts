@@ -17,7 +17,7 @@ export interface DisplayContent {
   };
   news: string[];
   achievements: string[];
-  tickerText: string | string[];
+  tickerText: string[];
   mediaContent: {
     images: string[];
     videoUrl: string;

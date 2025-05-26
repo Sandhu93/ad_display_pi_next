@@ -6,14 +6,16 @@ import type { DisplayContent } from "../types";
 
 export default function Admin() {
   const [content, setContent] = useState<DisplayContent>({
-    stats: { projects: 0, team: 0, publications: 0 },
+    stats: { total_students: 0, total_faculty: 0, labs_available: 0, ongoing_projects: 0, projects: 0, team: 0, publications: 0 },
     news: [],
     achievements: [],
-    tickerText: "",
+    tickerText: [],
     mediaContent: {
       images: [],
       videoUrl: "",
     },
+    Departments: [],
+    major_recruiters: [],
   });
 
   useEffect(() => {
@@ -204,14 +206,213 @@ export default function Admin() {
         {/* Ticker Text */}
         <section className="bg-white p-6 rounded-lg shadow mb-6">
           <h2 className="text-2xl font-bold mb-4">Ticker Text</h2>
-          <textarea
-            value={content.tickerText}
-            onChange={(e) =>
-              setContent({ ...content, tickerText: e.target.value })
-            }
-            className="w-full p-2 border rounded h-24"
-            placeholder="Enter ticker text (use • to separate items)"
-          />
+          <div className="space-y-4">
+            {content.tickerText.map((item, index) => (
+              <div key={index} className="flex gap-2">
+                <input
+                  type="text"
+                  value={item}
+                  onChange={(e) => {
+                    const newTickerText = [...content.tickerText];
+                    newTickerText[index] = e.target.value;
+                    setContent({ ...content, tickerText: newTickerText });
+                  }}
+                  className="flex-1 p-2 border rounded"
+                />
+                <button
+                  onClick={() => {
+                    const newTickerText = content.tickerText.filter((_, i) => i !== index);
+                    setContent({ ...content, tickerText: newTickerText });
+                  }}
+                  className="p-2 text-red-600 hover:bg-red-50 rounded"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={() => setContent({ ...content, tickerText: [...content.tickerText, ""] })}
+              className="flex items-center gap-2 text-blue-600 hover:bg-blue-50 p-2 rounded"
+            >
+              <Plus className="w-5 h-5" />
+              Add Ticker Item
+            </button>
+          </div>
+        </section>
+
+        {/* Media Content Section */}
+        <section className="bg-white p-6 rounded-lg shadow mb-6">
+          <h2 className="text-2xl font-bold mb-4">Media Content</h2>
+
+          {/* Video Upload */}
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-2">Current Video URL:</label>
+            <p className="break-all">{content.mediaContent.videoUrl}</p>
+            <input
+              type="file"
+              accept="video/*"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  const formData = new FormData();
+                  formData.append('file', file);
+
+                  try {
+                    const res = await fetch('/api/upload', {
+                      method: 'POST',
+                      body: formData,
+                    });
+                    const data = await res.json();
+                    if (data.status === 'succeeded') {
+                      setContent({
+                        ...content,
+                        mediaContent: { ...content.mediaContent, videoUrl: data.path },
+                      });
+                      alert('Video uploaded successfully!');
+                    } else {
+                      alert('Video upload failed.');
+                    }
+                  } catch (error) {
+                    console.error('Error uploading video:', error);
+                    alert('Error uploading video.');
+                  }
+                }
+              }}
+              className="w-full p-2 border rounded mt-2"
+            />
+          </div>
+
+          {/* Image List and Upload */}
+          <div>
+            <label className="block text-sm font-medium mb-2">Images:</label>
+            <div className="space-y-2">
+              {content.mediaContent.images.map((image, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <span className="flex-1 break-all">{image}</span>
+                  <button
+                    onClick={() => {
+                      const newImages = content.mediaContent.images.filter((_, i) => i !== index);
+                      setContent({ ...content, mediaContent: { ...content.mediaContent, images: newImages } });
+                    }}
+                    className="p-1 text-red-600 hover:bg-red-50 rounded"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <input type="file" accept="image/*" multiple onChange={async (e) => {
+                const files = e.target.files;
+                if (files) {
+                  const uploadedImagePaths: string[] = [];
+                  for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    try {
+                      const res = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData,
+                      });
+                      const data = await res.json();
+                      if (data.status === 'succeeded') {
+                        uploadedImagePaths.push(data.path);
+                      } else {
+                        alert(`Image upload failed for ${file.name}.`);
+                      }
+                    } catch (error) {
+                      console.error(`Error uploading image ${file.name}:`, error);
+                      alert(`Error uploading image ${file.name}.`);
+                    }
+                  }
+                  setContent({
+                    ...content,
+                    mediaContent: {
+                      ...content.mediaContent,
+                      images: [...content.mediaContent.images, ...uploadedImagePaths],
+                    },
+                  });
+                  if (uploadedImagePaths.length > 0) {
+                      alert(`${uploadedImagePaths.length} image(s) uploaded successfully!`);
+                  }
+                }
+              }} className="w-full p-2 border rounded mt-2" />
+          </div>
+        </section>
+
+        {/* Departments Section */}
+        <section className="bg-white p-6 rounded-lg shadow mb-6">
+          <h2 className="text-2xl font-bold mb-4">Departments</h2>
+          <div className="space-y-4">
+            {content.Departments.map((department, index) => (
+              <div key={index} className="flex gap-2">
+                <input
+                  type="text"
+                  value={department}
+                  onChange={(e) => {
+                    const newDepartments = [...content.Departments];
+                    newDepartments[index] = e.target.value;
+                    setContent({ ...content, Departments: newDepartments });
+                  }}
+                  className="flex-1 p-2 border rounded"
+                />
+                <button
+                  onClick={() => {
+                    const newDepartments = content.Departments.filter((_, i) => i !== index);
+                    setContent({ ...content, Departments: newDepartments });
+                  }}
+                  className="p-2 text-red-600 hover:bg-red-50 rounded"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={() => setContent({ ...content, Departments: [...content.Departments, ""] })}
+              className="flex items-center gap-2 text-blue-600 hover:bg-blue-50 p-2 rounded"
+            >
+              <Plus className="w-5 h-5" />
+              Add Department
+            </button>
+          </div>
+        </section>
+
+        {/* Major Recruiters Section */}
+        <section className="bg-white p-6 rounded-lg shadow mb-6">
+          <h2 className="text-2xl font-bold mb-4">Major Recruiters</h2>
+          <div className="space-y-4">
+            {content.major_recruiters.map((recruiter, index) => (
+              <div key={index} className="flex gap-2">
+                <input
+                  type="text"
+                  value={recruiter}
+                  onChange={(e) => {
+                    const newRecruiters = [...content.major_recruiters];
+                    newRecruiters[index] = e.target.value;
+                    setContent({ ...content, major_recruiters: newRecruiters });
+                  }}
+                  className="flex-1 p-2 border rounded"
+                />
+                <button
+                  onClick={() => {
+                    const newRecruiters = content.major_recruiters.filter((_, i) => i !== index);
+                    setContent({ ...content, major_recruiters: newRecruiters });
+                  }}
+                  className="p-2 text-red-600 hover:bg-red-50 rounded"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={() => setContent({ ...content, major_recruiters: [...content.major_recruiters, ""] })}
+              className="flex items-center gap-2 text-blue-600 hover:bg-blue-50 p-2 rounded"
+            >
+              <Plus className="w-5 h-5" />
+              Add Recruiter
+            </button>
+          </div>
         </section>
 
         {/* Save Button */}

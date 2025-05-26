@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 
 export function VideoSection({ videoUrl }: { videoUrl: string }) {
   return (
-    <div className="h-full">
+    <div className="w-full pb-[56.25%] relative">
       <video
-        className="w-full h-full rounded-lg object-contain"
+        className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
         autoPlay
         loop
         muted
@@ -32,13 +32,13 @@ export function ImageSlideshow({ images }: { images: string[] }) {
   }, [images.length]);
 
   return (
-    <div className="relative h-full">
+    <div className="w-full pb-[56.25%] relative">
       <Image
         src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
         width={1920} // Or a suitable base width
         height={1080} // Or a suitable base height
-        className="w-full h-full rounded-lg object-contain"
+        className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
       />
     </div>
   );

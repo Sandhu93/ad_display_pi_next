@@ -6,7 +6,12 @@ import type { DisplayContent } from "@/app/types";
 const contentFile = path.join(process.cwd(), "content.json");
 
 const defaultContent: DisplayContent = {
-  stats: { projects: 5, team: 9, publications: 12 },
+  stats: {
+    total_students: 0,
+    total_faculty: 0,
+    labs_available: 0,
+    ongoing_projects: 0,
+  },
   news: [
     "Welcome to our research lab display board",
     "New research paper published in Nature",
@@ -19,8 +24,9 @@ const defaultContent: DisplayContent = {
     "Two team members awarded PhD",
     "Research featured in international media",
   ],
-  tickerText:
-    "Welcome to our research lab • New achievements • Ongoing projects • Latest publications",
+  Departments: [] as string[],
+  major_recruiters: [] as string[],
+  tickerText: [] as string[],
   mediaContent: {
     images: [
       "/media/photos/image1.jpg",
@@ -53,11 +59,12 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    console.log(contentFile);
     const content = await request.json();
     await fs.writeFile(contentFile, JSON.stringify(content, null, 2));
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error updating content:", error);
+    console.error("Error updating content:", error); // Log the entire error object
     return NextResponse.json(
       { error: "Failed to update content" },
       { status: 500 }

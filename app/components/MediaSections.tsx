@@ -8,6 +8,7 @@ export function VideoSection({ videoUrl }: { videoUrl: string }) {
     <div className="h-full">
       <video
         className="w-full h-full rounded-lg object-contain"
+ className="w-full h-full rounded-lg object-cover"
         autoPlay
         loop
         muted
@@ -38,7 +39,7 @@ export function ImageSlideshow({ images }: { images: string[] }) {
         alt={`Slide ${currentIndex + 1}`}
         width={1920} // Or a suitable base width
         height={1080} // Or a suitable base height
-        className="w-full h-full rounded-lg object-contain"
+ className="w-full h-full rounded-lg object-cover"
       />
     </div>
   );

@@ -18,6 +18,7 @@ export interface DisplayContent {
   news: string[];
   achievements: string[];
   tickerText: string[];
+  footerText: string[];
   mediaContent: {
     images: string[];
     videoUrl: string;

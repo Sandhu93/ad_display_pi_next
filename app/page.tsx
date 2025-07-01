@@ -22,6 +22,7 @@ const defaultContent: DisplayContent = {
   Departments: [],
   major_recruiters: [],
   tickerText: [],
+  footerText: [],
   mediaContent: {
     images: [
       "/media/photos/image1.jpg",
@@ -102,8 +103,7 @@ export default function Display() {
             </div>
             <div className="marquee overflow-hidden whitespace-nowrap relative w-full">
               <div className="animate-marquee inline-block font-bold text-[clamp(2rem,6vw,6rem)]">
-                Muthoot Institute of Technology and Science welcomes the NBA
-                Evaluation Team.
+                {content.tickerText.length > 0 ? content.tickerText[0] : "Welcome to Muthoot Institute of Technology and Science"}
               </div>
             </div>
           </div>
@@ -161,8 +161,7 @@ export default function Display() {
 
       {/* News Ticker */}
       <footer className="h-[5vh] bg-blue-600">
-        <NewsTickerContainer headlines={content.news} />
-        {/* <NewsTickerContainer headlines={[content.tickerText]} /> */}
+        <NewsTickerContainer headlines={content.footerText || []} />
       </footer>
     </div>
   );

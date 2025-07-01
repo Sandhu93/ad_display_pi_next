@@ -6,11 +6,18 @@ import type { DisplayContent } from "../types";
 
 export default function Admin() {
   const [content, setContent] = useState<DisplayContent>({
-    stats: { total_students: 0, total_faculty: 0, labs_available: 0, ongoing_projects: 0, projects: 0, team: 0, publications: 0 },
+    stats: { 
+      total_students: 0, 
+      total_faculty: 0, 
+      labs_available: 0, 
+      ongoing_projects: 0, 
+      "placements 2025": "0" 
+    },
     // Ensure all properties from DisplayContent are initialized
     news: [],
     achievements: [],
     tickerText: [],
+    footerText: [],
     mediaContent: {
       images: [],
       videoUrl: "",
@@ -60,64 +67,77 @@ export default function Admin() {
         {/* Stats Section */}
         <section className="bg-white p-6 rounded-lg shadow mb-6">
           <h2 className="text-2xl font-bold mb-4">Lab Statistics</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Active Projects
-              </label>
-              <input
-                type="number"
-                value={content.stats.projects}
-                onChange={(e) =>
-                  setContent({
-                    ...content,
-                    stats: {
-                      ...content.stats,
-                      projects: parseInt(e.target.value) || 0,
-                    },
-                  })
-                }
-                className="w-full p-2 border rounded"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Team Members
-              </label>
-              <input
-                type="number"
-                value={content.stats.team}
-                onChange={(e) =>
-                  setContent({
-                    ...content,
-                    stats: {
-                      ...content.stats,
-                      team: parseInt(e.target.value) || 0,
-                    },
-                  })
-                }
-                className="w-full p-2 border rounded"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Publications
-              </label>
-              <input
-                type="number"
-                value={content.stats.publications}
-                onChange={(e) =>
-                  setContent({
-                    ...content,
-                    stats: {
-                      ...content.stats,
-                      publications: parseInt(e.target.value) || 0,
-                    },
-                  })
-                }
-                className="w-full p-2 border rounded"
-              />
-            </div>
+          <div className="space-y-4">
+            {Object.entries(content.stats).map(([key, value], index) => (
+              <div key={key} className="flex gap-2">
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">
+                      Label
+                    </label>
+                    <input
+                      type="text"
+                      value={key}
+                      onChange={(e) => {
+                        const newStats = { ...content.stats };
+                        const oldValue = newStats[key];
+                        delete newStats[key];
+                        newStats[e.target.value] = oldValue;
+                        setContent({ ...content, stats: newStats });
+                      }}
+                      className="w-full p-2 border rounded"
+                      placeholder="Statistic name (e.g., total_students)"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">
+                      Value
+                    </label>
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={(e) => {
+                        setContent({
+                          ...content,
+                          stats: {
+                            ...content.stats,
+                            [key]: e.target.value,
+                          },
+                        });
+                      }}
+                      className="w-full p-2 border rounded"
+                      placeholder="Value (number or text)"
+                    />
+                  </div>
+                </div>
+                <button
+                  onClick={() => {
+                    const newStats = { ...content.stats };
+                    delete newStats[key];
+                    setContent({ ...content, stats: newStats });
+                  }}
+                  className="p-2 text-red-600 hover:bg-red-50 rounded"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={() => {
+                const newKey = `new_stat_${Object.keys(content.stats).length + 1}`;
+                setContent({
+                  ...content,
+                  stats: {
+                    ...content.stats,
+                    [newKey]: 0,
+                  },
+                });
+              }}
+              className="flex items-center gap-2 text-blue-600 hover:bg-blue-50 p-2 rounded"
+            >
+              <Plus className="w-5 h-5" />
+              Add New Statistic
+            </button>
           </div>
         </section>
 
@@ -204,9 +224,10 @@ export default function Admin() {
           </div>
         </section>
 
-        {/* Ticker Text */}
+        {/* Welcome Message */}
         <section className="bg-white p-6 rounded-lg shadow mb-6">
-          <h2 className="text-2xl font-bold mb-4">Ticker Text</h2>
+          <h2 className="text-2xl font-bold mb-4">Welcome Message (Main Display)</h2>
+          <p className="text-sm text-gray-600 mb-4">This text appears next to "WELCOME" in the main display area.</p>
           <div className="space-y-4">
             {content.tickerText.map((item, index) => (
               <div key={index} className="flex gap-2">
@@ -237,6 +258,45 @@ export default function Admin() {
             >
               <Plus className="w-5 h-5" />
               Add Ticker Item
+            </button>
+          </div>
+        </section>
+
+        {/* Footer Ticker */}
+        <section className="bg-white p-6 rounded-lg shadow mb-6">
+          <h2 className="text-2xl font-bold mb-4">Footer Ticker</h2>
+          <p className="text-sm text-gray-600 mb-4">This text appears in the scrolling footer at the bottom of the display.</p>
+          <div className="space-y-4">
+            {content.footerText?.map((item, index) => (
+              <div key={index} className="flex gap-2">
+                <input
+                  type="text"
+                  value={item}
+                  onChange={(e) => {
+                    const newFooterText = [...(content.footerText || [])];
+                    newFooterText[index] = e.target.value;
+                    setContent({ ...content, footerText: newFooterText });
+                  }}
+                  className="flex-1 p-2 border rounded"
+                  placeholder="Footer ticker item"
+                />
+                <button
+                  onClick={() => {
+                    const newFooterText = (content.footerText || []).filter((_, i) => i !== index);
+                    setContent({ ...content, footerText: newFooterText });
+                  }}
+                  className="p-2 text-red-600 hover:bg-red-50 rounded"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={() => setContent({ ...content, footerText: [...(content.footerText || []), ""] })}
+              className="flex items-center gap-2 text-blue-600 hover:bg-blue-50 p-2 rounded"
+            >
+              <Plus className="w-5 h-5" />
+              Add Footer Item
             </button>
           </div>
         </section>

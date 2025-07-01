@@ -20,9 +20,6 @@ export async function POST(request: Request) {
 
     // Determine file type and set destination
     if (file.type.startsWith('image/')) {
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
       destinationDir = photoUploadDir;
       fileUrlBase = '/media/photos/';
     } else if (file.type.startsWith('video/')) {

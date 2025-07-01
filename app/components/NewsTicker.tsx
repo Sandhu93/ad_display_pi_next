@@ -7,35 +7,34 @@ interface NewsTickerProps {
   speed?: number;
 }
 
-export default function NewsTicker({ news, speed = 30 }: NewsTickerProps) {
+export default function NewsTicker({ news, speed = 50 }: NewsTickerProps) {
   const [position, setPosition] = useState(0);
   const combinedNews = news.join(" • ");
 
   useEffect(() => {
     const animate = () => {
       setPosition((prev) => {
-        if (prev <= -100) return 100;
-        return prev - 0.05;
+        // Reset smoothly when the text has fully scrolled
+        if (prev <= -100) return 0;
+        return prev - 0.1;
       });
     };
 
     const animation = setInterval(animate, speed);
     return () => clearInterval(animation);
-  }, [speed]);
+  }, [speed, combinedNews]);
+
+  if (!news.length) return null;
 
   return (
-    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-[clamp(1rem,2vw,2.5rem)] font-semibold">
+    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-[clamp(1rem,2vw,2.5rem)] font-semibold relative">
       <div
-        className="inline-block"
+        className="inline-block transition-transform duration-100 ease-linear"
         style={{ transform: `translateX(${position}%)` }}
       >
-        {combinedNews}
-      </div>
-      <div
-        className="inline-block"
-        style={{ transform: `translateX(${position}%)` }}
-      >
-        {combinedNews}
+        <span className="pr-8">{combinedNews}</span>
+        <span className="pr-8">{combinedNews}</span>
+        <span className="pr-8">{combinedNews}</span>
       </div>
     </div>
   );

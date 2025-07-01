@@ -27,6 +27,7 @@ const defaultContent: DisplayContent = {
   Departments: [] as string[],
   major_recruiters: [] as string[],
   tickerText: [] as string[],
+  footerText: [] as string[],
   mediaContent: {
     images: [
       "/media/photos/image1.jpg",

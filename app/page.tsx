@@ -77,7 +77,7 @@ export default function Display() {
               height={100} // Provide a reasonable size; styling controls visual dimensions
               className="h-6 sm:h-8 md:h-10 lg:h-12 xl:h-14 w-auto"
             />
-            <h1 className="text-[clamp(1.5rem,2.5vw,3rem)] font-bold">
+            <h1 className="text-[clamp(0.9rem,1.5vw,1.8rem)] font-bold">
               Muthoot Institute of Technology and Science
             </h1>
           </div>
@@ -95,14 +95,14 @@ export default function Display() {
             <StatsGrid stats={content.stats} />
           </div>
           <div className="flex items-center bg-gray-900 text-white py-4 px-6 overflow-hidden whitespace-nowrap h-[16vh]">
-            <div className="mr-6 font-bold flex items-center text-white text-[clamp(2rem,4vw,5rem)]">
+            <div className="mr-6 font-bold flex items-center text-white text-[clamp(1rem,2vw,2.5rem)]">
               WELCOME
-              <span className="mx-3 text-white text-[clamp(2.5rem,5vw,6rem)]">
+              <span className="mx-3 text-white text-[clamp(1.2rem,2.5vw,3rem)]">
                 ⟩
               </span>
             </div>
             <div className="marquee overflow-hidden whitespace-nowrap relative w-full">
-              <div className="animate-marquee inline-block font-bold text-[clamp(2rem,6vw,6rem)]">
+              <div className="animate-marquee inline-block font-bold text-[clamp(1rem,2.5vw,3rem)]">
                 {content.tickerText.length > 0 ? content.tickerText[0] : "Welcome to Muthoot Institute of Technology and Science"}
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function Display() {
         <div className="landscape:w-1/4 portrait:h-[38vh] flex flex-col gap-2">
           {/* Market Watch */}
           <div className="landscape:h-[20vh] portrait:h-1/4 bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl font-bold">
               Market Watch
             </h2>
             <StockTicker />
@@ -135,7 +135,7 @@ export default function Display() {
 
           {/* News Section */}
           <div className="landscape:h-[34vh] portrait:h-[38%] bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl font-bold mb-2">
               Departments
             </h2>
             <AutoScroll
@@ -147,7 +147,7 @@ export default function Display() {
 
           {/* Achievements Section */}
           <div className="landscape:h-[34vh] portrait:h-[38%] bg-gray-800 p-2 rounded-lg">
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl font-bold mb-2">
               Major Recruiters
             </h2>
             <AutoScroll

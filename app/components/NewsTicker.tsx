@@ -27,7 +27,7 @@ export default function NewsTicker({ news, speed = 50 }: NewsTickerProps) {
   if (!news.length) return null;
 
   return (
-    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-[clamp(1rem,2vw,2.5rem)] font-semibold relative">
+    <div className="bg-blue-600 p-4 overflow-hidden whitespace-nowrap text-[clamp(0.7rem,1.2vw,1.5rem)] font-semibold relative">
       <div
         className="inline-block transition-transform duration-100 ease-linear"
         style={{ transform: `translateX(${position}%)` }}

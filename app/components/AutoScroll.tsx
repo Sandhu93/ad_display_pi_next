@@ -43,7 +43,7 @@ export default function AutoScroll({
           <div
             key={index}
             className={`bg-gray-700 p-2 rounded-lg 
-              text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 
+              text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 
               ${itemClassName}`}
           >
             <p>{item}</p>
